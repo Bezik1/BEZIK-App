@@ -8,6 +8,7 @@ import './index.css'
 import Loading from "../Loading";
 import SpeechRecognizer from "../SpeechRecognizer";
 import { useCommandContext } from "../../contexts/CommandContext";
+import Background from "../Background";
 
 
 const SERVER_URL = "http://localhost:8000/command"

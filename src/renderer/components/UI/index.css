@@ -16,6 +16,8 @@
   
   .input {
     padding-left: 70px;
+    font-family: sans-serif;
+    font-size: 15px;
     height: 35px;
     width: 240px;
     background: none;
