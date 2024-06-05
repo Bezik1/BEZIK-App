@@ -1,0 +1,147 @@
+.ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10vh;
+    gap: 10px;
+  }
+  
+  .command-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .input {
+    padding-left: 70px;
+    height: 35px;
+    width: 240px;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #7d0d50;
+    color: #7d0d50;
+  }
+
+  ::placeholder {
+    color: #7d0d50;
+}
+
+  .terminal-icon {
+    margin-bottom: 10px;
+    margin-right: -55px;
+    width: 40px;
+    height: 40px;
+  }
+
+  select:focus, input:focus, textarea:focus {
+    color: #7d0d50;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+  }
+  
+  .btn {
+    margin-bottom: 10px;
+    margin-left: -50px;
+    transition: 0.5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: #7d0d50;
+    height: 30px;
+    margin-bottom: 5px;
+    width: 30px;
+    background: none;
+    border: none;
+  }
+  
+  .btn:hover {
+    transition: 0.5s;
+    transform: translateY(-2.5px);
+  }
+  
+  h1 {
+    color: #7d0d50;
+  }
+
+  .status-container {
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+  }
+
+  .status {
+    position: relative;
+    right: -40px;
+    bottom: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .line {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    padding: 5px;
+    height: 35px;
+    width: 300px;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #7d0d50;
+    color: #7d0d50;
+  }
+
+  .status-text {
+    margin-left: 65px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .operation {
+    position: relative;
+    right: -40px;
+    bottom: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .highlight {
+    color: #ff9dfc;
+    text-shadow: 0px 0px 20px #ffe9fe;
+  }
+
+  .sound-icon {
+    transition: .5s;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+
+  .sound-icon:hover {
+    transition: .5s;
+    color: #fff;
+  }
+
+  .sound-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sound-btn {
+    position: relative;
+    right: 40px;
+  }
+
+  .active-sound-icon {
+    color: #fff;
+}
