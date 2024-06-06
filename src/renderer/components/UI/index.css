@@ -70,6 +70,18 @@
   
   h1 {
     color: #7d0d50;
+    display: flex;
+    gap: 10px;
+  }
+
+  .marked {
+    cursor: default;
+    -webkit-text-stroke: 2px #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: .5s;
+    color: transparent;
+    text-shadow: 0px 0px 40px #fff;
   }
 
   .status-container {
@@ -84,6 +96,8 @@
     bottom: 5px;
     width: 40px;
     height: 40px;
+    overflow: hidden;
+    display: inline-block;
   }
 
   .line {
@@ -114,11 +128,8 @@
     bottom: 5px;
     width: 40px;
     height: 40px;
-  }
-
-  .highlight {
-    color: #ff9dfc;
-    text-shadow: 0px 0px 20px #ffe9fe;
+    overflow: hidden;
+    display: inline-block;
   }
 
   .sound-icon {
@@ -146,4 +157,14 @@
 
   .active-sound-icon {
     color: #fff;
-}
+  }
+
+  .good-response {
+    color: #7fffd4;
+    text-shadow: 0px 0px 20px #beffe9;
+  }
+  
+  .bad-response {
+    color: #fd0000;
+    text-shadow: 0px 0px 20px #f45b5b;
+  }

@@ -8,11 +8,22 @@ import { useCommandContext } from "../../contexts/CommandContext";
 
 const SpeechRecognizer = () =>{
     const [record, setRecord] = useState(false)
-    const { setOperation, setStatus } = useCommandContext()
+    const { setOperation, setStatus, setLoading } = useCommandContext()
 
+    useEffect(() =>{
+        const handleKeyPress = (e: KeyboardEvent) =>{
+        const activeElement = document.activeElement as HTMLElement | null;
+          if(e.key === "r" && activeElement?.tagName !== 'INPUT') handleClick()
+        }
+    
+        window.addEventListener("keydown", handleKeyPress)
+    
+        return () => window.removeEventListener("keydown", handleKeyPress)
+      }, )
 
     const handleClick = async () =>{
         setRecord(true)
+        setLoading(true)
 
         try {
             const response = await axios.get(`http://localhost:8000/upload`)
@@ -21,15 +32,19 @@ const SpeechRecognizer = () =>{
                 const res = await axios.get('http://localhost:8000/read');
                 
                 console.log(res.data.transcription)
-                setOperation(res.data.operation)
-                setStatus(res.status)
+                setOperation(res.data.message)
+                setStatus(res.data.status)
                 setRecord(false)
+                setLoading(false)
             } else {
-                console.error('File upload failed');
-                setStatus(response.status)
+                setStatus(response.data.status)
+                setOperation(response.data.message)
+                setLoading(false)
             }
           } catch (error) {
-                console.error('Error uploading file:', error);
+                setStatus(500)
+                setLoading(false)
+                setOperation(String(error))
           }
     }
 

@@ -98,10 +98,12 @@
   "dependencies": {
     "@react-three/fiber": "^8.16.8",
     "axios": "^1.7.2",
+    "child_process": "^1.0.2",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-speech": "^1.0.7",
     "electron-updater": "^6.1.4",
+    "electron-winstaller": "^5.3.1",
     "gsap": "^3.12.5",
     "polyfill": "^0.1.0",
     "react": "^18.2.0",
@@ -238,7 +240,8 @@
       "output": "release/build"
     },
     "extraResources": [
-      "./assets/**"
+      "./assets/**",
+      "./Model/**"
     ],
     "publish": {
       "provider": "github",

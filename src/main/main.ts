@@ -13,6 +13,7 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import { resolveHtmlPath } from './util';
+import { exec } from 'child_process';
 
 class AppUpdater {
   constructor() {
@@ -55,6 +56,27 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
+const pythonServerScript = path.join(__dirname, '/Model/index.py')
+const pythonDependenciesScript = path.join(__dirname, '/Model/install.py')
+
+const pythonServerProcess = exec(`python ${pythonServerScript}`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
+
+const pythonDependenciesProcess = exec(`python ${pythonDependenciesScript}`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
+
 const createWindow = async () => {
   if (isDebug) {
     await installExtensions();
@@ -72,7 +94,7 @@ const createWindow = async () => {
     show: false,
     width: 450,
     height: 480,
-    icon: getAssetPath('icon.png'),
+    icon: getAssetPath('bezik_icon.png'),
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
@@ -120,6 +142,8 @@ app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
   if (process.platform !== 'darwin') {
+    pythonServerProcess.kill();
+    pythonDependenciesProcess.kill()
     app.quit();
   }
 });

@@ -2,7 +2,7 @@ import { IoMdSend } from "react-icons/io";
 import { HiMiniCommandLine } from "react-icons/hi2";
 import { RiFileInfoFill } from "react-icons/ri";
 import { AiFillFileText } from "react-icons/ai";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css'
 import Loading from "../Loading";
@@ -15,30 +15,45 @@ const SERVER_URL = "http://localhost:8000/command"
 
 const UI = () =>{
   const [command, setCommand] = useState<string>('')
-  const [loading, setLoading] = useState(false)
-  const { operation, setOperation, status, setStatus} = useCommandContext()
+  const { operation, setOperation, status, setStatus, loading, setLoading } = useCommandContext()
+
+  useEffect(() =>{
+    const handleKeyPress = (e: KeyboardEvent) =>{
+      if(e.key === "Enter") handleClick()
+    }
+
+    window.addEventListener("keydown", handleKeyPress)
+
+    return () => window.removeEventListener("keydown", handleKeyPress)
+  }, [command])
 
   const handleClick = async () => {
     try {
+      if(command.length === 0) {
+        setOperation("Empty Command")
+        setStatus(400)
+        return;
+      }
+
       setLoading(true)
       const res = await axios.get(`${SERVER_URL}/${command}`);
 
-      setCommand('')
       setLoading(false)
 
       setStatus(res.data.status)
-      setOperation(res.data.operation)
-
-      console.log(res);
+      setOperation(res.data.message)
     } catch (error) {
       setLoading(false)
-      console.error("There was an error!", error);
+      setStatus(500)
+      setOperation(String(error))
     }
   }
 
   return (
     <div className='ui'>
-      <h1>BEZIK Model</h1>
+      <h1>
+        <div className="marked">BEZIK</div>Model
+      </h1>
       <SpeechRecognizer />
       <div className='command-form'>
         <HiMiniCommandLine className="terminal-icon"/>
@@ -54,7 +69,7 @@ const UI = () =>{
       <div className="status-container">
         <RiFileInfoFill className="status"/> 
         <div className="line">
-          {!loading ? <div className="status-text">Status: <div className="highlight">{status}</div></div> : <Loading className="status-text"/>}
+          {!loading ? <div className="status-text">Status: <div className={`${status === 200 ? "good-response" : "bad-response"}`}>{status}</div></div> : <Loading className="status-text"/>}
         </div>
       </div>
     </div>
