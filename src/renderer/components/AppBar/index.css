@@ -1,0 +1,85 @@
+.app-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: -7.5px;
+    left: -10px;
+    width: 100vw;
+    height: 40px;
+    background-color: #00000089;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+}
+
+.drag-region {
+    width: 50vw;
+    height: 39px;
+    -webkit-app-region: drag;
+    z-index: -1;
+}
+
+.app-bar-item {
+    cursor: pointer;
+    margin-right: 10px;
+    z-index: 2;
+}
+
+.close {
+    margin-top: 5px;
+    color: #d9d7d7;
+    transition: .5s;
+    width: 30px;
+    height: 30px;
+}
+
+.close:hover {
+    transition: .5s;
+    transform: scale(1.2);
+    color: #fff;
+}
+
+.minimize {
+    margin-top: 5px;
+    color: #d9d7d7;
+    transition: .5s;
+    width: 30px;
+    height: 30px;
+}
+
+.minimize:hover {
+    transition: .5s;
+    transform: scale(1.2);
+    color: #fff;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    transition: .5s;
+}
+
+.settings-btn {
+    cursor: pointer;
+    color: #d9d7d7;
+    transition: .5s;
+    width: 30px;
+    height: 30px;
+}
+
+.settings-btn:hover {
+    transform: scale(1.1);
+    color: #fff;
+    transition: .5s;
+}

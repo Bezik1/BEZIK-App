@@ -1,0 +1,23 @@
+.microphone-status {
+    cursor: pointer;
+    transition: .5s;
+    display: flex;
+    align-items: center;
+}
+
+.microphone-icon {
+    width: 25px;
+    height: 25px;
+    transition: .5s;
+    color: #d9d7d7;
+}
+
+.microphone-status:hover {
+    transition: .5s;
+    transform: scale(1.1);
+}
+
+.microphone-status:hover .microphone-icon {
+    color: #fff;
+    transition: .5s;
+}

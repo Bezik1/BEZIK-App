@@ -1,0 +1,24 @@
+.server-status {
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    transition: .5s;
+}
+
+.server-icon {
+    transition: .5s;
+    color: #d9d7d7;
+    width: 20px;
+    height: 20px;
+}
+
+.server-status:hover {
+    transition: .5s;
+    transform: scale(1.1);
+}
+
+.server-status:hover .server-icon {
+    transition: .5s;
+    color: #fff;
+}

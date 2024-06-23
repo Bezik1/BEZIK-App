@@ -8,15 +8,16 @@ import './index.css'
 import Loading from "../Loading";
 import SpeechRecognizer from "../SpeechRecognizer";
 import { useCommandContext } from "../../contexts/CommandContext";
-import Background from "../Background";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 
 const SERVER_URL = "http://localhost:8000/command"
 
 const UI = () =>{
+  const { theme } = useThemeContext()
   const [command, setCommand] = useState<string>('')
-  const { operation, setOperation, status, setStatus, loading, setLoading } = useCommandContext()
-
+  const { operation, setOperation, status, setStatus, loading, setLoading, serverAcitve, setServerActive } = useCommandContext()
+  
   useEffect(() =>{
     const handleKeyPress = (e: KeyboardEvent) =>{
       if(e.key === "Enter") handleClick()
@@ -39,15 +40,25 @@ const UI = () =>{
       const res = await axios.get(`${SERVER_URL}/${command}`);
 
       setLoading(false)
-
+      setServerActive(true)
+      console.log(res.data.operation)
       setStatus(res.data.status)
       setOperation(res.data.message)
     } catch (error) {
       setLoading(false)
       setStatus(500)
       setOperation(String(error))
+      setServerActive(false)
     }
   }
+
+  useEffect(() =>{
+    if(theme === 'dark') {
+        document.body.classList.add('dark-body')
+    } else {
+        document.body.classList.remove('dark-body')
+    }
+}, [theme])
 
   return (
     <div className='ui'>
@@ -63,7 +74,7 @@ const UI = () =>{
       <div className="status-container">
         <AiFillFileText  className="operation"/>
         <div className="line">
-          {!loading ? <div className="status-text">{operation}</div> : <Loading className="status-text"/>}
+          {!loading ? <div className="status-text">{(serverAcitve && operation == "Server Disabled") ? "Server Active" : operation}</div> : <Loading className="status-text"/>}
         </div>
       </div>
       <div className="status-container">

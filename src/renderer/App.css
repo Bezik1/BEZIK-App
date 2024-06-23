@@ -4,7 +4,7 @@
  */
 body {
   position: relative;
-  color: #7d0d50;
+  color: #bd157a;
   height: 100vh;
   background: linear-gradient(
     200.96deg,
@@ -17,37 +17,36 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s;
 }
 
-button:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  height: fit-content;
-  width: fit-content;
-  margin: 10px;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-
-.Hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+.dark-body {
+  background: linear-gradient(
+    200.96deg,
+    #6d1264 -29.09%,
+    #000000 51.77%,
+    #3386c2 129.35%
+  );
 }
 
 ::selection {
   background-color: #b40e71;
   color: #cb78aa;
+}
+
+.bulb-light {
+  transition: .5s;
+  width: 10px;
+  height: 10px;
+  border-radius: 40px;
+}
+
+.bulb-ok {
+  background-color: #88f788;
+  box-shadow: 0 0 20px #88f788;
+}
+
+.bulb-error {
+  background-color: #ff5555;
+  box-shadow: 0 0 20px #ff5555;
 }

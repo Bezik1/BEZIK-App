@@ -11,6 +11,11 @@ pids
 coverage
 .eslintcache
 
+# Temp files
+file.py
+recording.wav
+file.txt
+
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules

@@ -31,6 +31,18 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
+ipcMain.on('ipc-close', async () => {
+  mainWindow?.close()
+  app.quit()
+  pythonServerProcess.kill();
+  pythonDependenciesProcess.kill()
+  exec('taskkill /F /IM python.exe')
+});
+
+ipcMain.on('ipc-minimize', async () => {
+  mainWindow?.minimize()
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
@@ -56,19 +68,26 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
-const pythonServerScript = path.join(__dirname, '/Model/index.py')
-const pythonDependenciesScript = path.join(__dirname, '/Model/install.py')
+const pythonServerScript = app.isPackaged
+  ? path.join(process.resourcesPath, 'Model/index.py')
+  : path.join(__dirname, '../../Model/index.py')
 
-const pythonServerProcess = exec(`python ${pythonServerScript}`, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`exec error: ${error}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-  console.error(`stderr: ${stderr}`);
-});
+const pythonDependenciesScript = app.isPackaged
+  ? path.join(process.resourcesPath, 'Model/install.py')
+  : path.join(__dirname, '../../Model/index.py')
+
 
 const pythonDependenciesProcess = exec(`python ${pythonDependenciesScript}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log("Dependencies installed succesfully")
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+});
+
+const pythonServerProcess = exec(`python ${pythonServerScript}`, (error, stdout, stderr) => {
   if (error) {
     console.error(`exec error: ${error}`);
     return;
@@ -91,10 +110,17 @@ const createWindow = async () => {
   };
 
   mainWindow = new BrowserWindow({
-    show: false,
+    frame: false,
+    show: true,
+    resizable: true,
     width: 450,
     height: 480,
-    icon: getAssetPath('bezik_icon.png'),
+    maxHeight: 480,
+    maxWidth: 450,
+    minHeight: 480,
+    minWidth: 450,
+    alwaysOnTop: true,
+    icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
@@ -102,6 +128,7 @@ const createWindow = async () => {
     },
   });
 
+  mainWindow.focus()
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
@@ -111,12 +138,15 @@ const createWindow = async () => {
     if (process.env.START_MINIMIZED) {
       mainWindow.minimize();
     } else {
+      mainWindow.focus()
       mainWindow.show();
     }
   });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+    pythonServerProcess.kill();
+    pythonDependenciesProcess.kill()
   });
 
   mainWindow.setMenu(null);
@@ -159,3 +189,13 @@ app
     });
   })
   .catch(console.log);
+
+  app.setAppUserModelId("BEZIK")
+
+  app.setLoginItemSettings({
+    openAtLogin: true,
+    path: app.getPath("exe"),
+    args: [
+    '--processStart', `"${app.getPath("exe")}"`,
+  ]
+  })

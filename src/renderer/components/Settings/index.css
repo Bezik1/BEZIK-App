@@ -1,0 +1,42 @@
+.settings {
+    z-index: 3;
+    position: absolute;
+    width: 52.5vw;
+    height: 100vh;
+    top: 6.9vh;
+    left: -10px;
+    background-color: #00000089;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-item {
+    margin-top: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d9d7d7;
+}
+
+.theme-ico {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: #d9d7d7;
+    opacity: 0;
+    transition: .2s;
+}
+
+.theme-ico:hover {
+    transition: .2s;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.user-ico {
+    width: 50px;
+    height: 50px;
+}
