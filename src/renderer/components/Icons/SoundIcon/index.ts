@@ -1,0 +1,1 @@
+export { SoundIcon } from "./SoundIcon";

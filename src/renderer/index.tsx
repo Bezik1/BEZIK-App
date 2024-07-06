@@ -1,14 +1,24 @@
 import { createRoot } from 'react-dom/client';
 import 'regenerator-runtime/runtime'
-import App from './App';
+import { App } from './screens/App';
+import "./index.css"
+import { ThemeProvider } from './contexts/ThemeContext';
+import { CommandProvider } from './contexts/CommandContext';
+import { CommandHistoryProvider } from './contexts/CommandHistoryContext';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+    <CommandHistoryProvider>
+        <ThemeProvider>
+            <CommandProvider>
+                <App />
+            </CommandProvider>
+        </ThemeProvider>
+    </CommandHistoryProvider>
+);
 
-// calling IPC exposed from preload script
 window.electron.ipcRenderer.once('ipc-example', (arg) => {
-  // eslint-disable-next-line no-console
   console.log(arg);
 });
 window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);

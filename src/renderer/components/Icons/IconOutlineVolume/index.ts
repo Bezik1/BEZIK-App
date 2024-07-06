@@ -1,0 +1,1 @@
+export { IconOutlineVolume } from "./IconOutlineVolume";

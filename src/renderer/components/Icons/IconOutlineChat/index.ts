@@ -1,0 +1,1 @@
+export { IconOutlineChat } from "./IconOutlineChat";

@@ -10,7 +10,7 @@ const ThemeContext = createContext<{ theme: 'light' | 'dark', setTheme: React.Di
 })
 
 export const ThemeProvider = ({ children } : ParentProps) =>{
-    const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+    const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
     return (
         <ThemeContext.Provider value={{theme, setTheme}}>

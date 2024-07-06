@@ -1,0 +1,228 @@
+.sound-icon {
+  height: 17px;
+  position: relative;
+  width: 18px;
+}
+
+.sound-icon .sound-line {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 0;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .div {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 4px;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .sound-line-1 {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 1px;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .sound-line-2 {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 8px;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .sound-line-3 {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 11px;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .sound-line-4 {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  left: 16px;
+  position: absolute;
+  width: 2px;
+}
+
+.sound-icon .step-1 {
+  height: 10px;
+  top: 4px;
+}
+
+.sound-icon .step-4 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .step-2 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .step-3 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .start {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .end {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .step-5 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-step-1 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-step-4 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-step-2 {
+  height: 10px;
+  top: 4px;
+}
+
+.sound-icon .state-step-3 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-start {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-end {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-step-5 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-step-1 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-step-4 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-step-2 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-step-3 {
+  height: 10px;
+  top: 4px;
+}
+
+.sound-icon .state-0-start {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-end {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-0-step-5 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-step-1 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-step-4 {
+  height: 10px;
+  top: 4px;
+}
+
+.sound-icon .state-1-step-2 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-step-3 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-start {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-end {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-1-step-5 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-step-1 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-step-4 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-step-2 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-step-3 {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-start {
+  height: 17px;
+  top: 0;
+}
+
+.sound-icon .state-2-end {
+  height: 16px;
+  top: 1px;
+}
+
+.sound-icon .state-2-step-5 {
+  height: 10px;
+  top: 4px;
+}

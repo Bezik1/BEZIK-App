@@ -1,0 +1,1 @@
+export { IconOutlineChip } from "./IconOutlineChip";

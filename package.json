@@ -1,5 +1,5 @@
 {
-  "description": "A foundation for scalable desktop apps",
+  "description": "AI Computer Assistant",
   "keywords": [
     "electron",
     "boilerplate",
@@ -11,19 +11,18 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://bezik.onrender.com",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/Bezik1/BEZIK-App/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
   },
-  "license": "MIT",
   "author": {
     "name": "Mateusz Adamowicz",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "email": "mateusz.adamowicz.lo1@gmail.com",
+    "url": "https://bezik.onrender.com"
   },
   "contributors": [
     {
@@ -104,6 +103,7 @@
     "electron-speech": "^1.0.7",
     "electron-updater": "^6.1.4",
     "electron-winstaller": "^5.3.1",
+    "framer-motion": "^11.2.13",
     "fs": "^0.0.1-security",
     "gsap": "^3.12.5",
     "path-browserify": "^1.0.1",

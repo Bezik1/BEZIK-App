@@ -1,0 +1,42 @@
+.light-bulb {
+  height: 13px;
+  width: 13px;
+}
+
+.light-bulb .overlap-group {
+  border-radius: 6.67px/6.55px;
+  height: 13px;
+  position: relative;
+}
+
+.light-bulb .ellipse {
+  background-color: #6fff6c;
+  border-radius: 5px/4.91px;
+  height: 10px;
+  left: 1px;
+  position: absolute;
+  top: 1px;
+  width: 10px;
+}
+
+.light-bulb .ellipse-2 {
+  background-color: #6fff6c;
+  border-radius: 6.67px/6.55px;
+  filter: blur(20px);
+  height: 13px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 13px;
+  transition: .5s;
+}
+
+.bulb-2-disabled {
+  transition: .5s;
+  background-color: #ff6c6c !important;
+}
+
+.bulb-disabled {
+  transition: .5s;
+  background-color: #ff6c6c !important;
+}

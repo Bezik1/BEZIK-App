@@ -1,0 +1,1 @@
+export { IconOutlineGlobe } from "./IconOutlineGlobe";

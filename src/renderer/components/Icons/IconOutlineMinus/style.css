@@ -1,0 +1,13 @@
+.icon-outline-minus {
+  height: 31px;
+  position: relative;
+  width: 32px;
+}
+
+.icon-outline-minus .icon {
+  height: 2px;
+  left: 4px;
+  position: absolute;
+  top: 15px;
+  width: 23px;
+}

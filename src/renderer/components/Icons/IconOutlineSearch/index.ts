@@ -1,0 +1,1 @@
+export { IconOutlineSearch } from "./IconOutlineSearch";
