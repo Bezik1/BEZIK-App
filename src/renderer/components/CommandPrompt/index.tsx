@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 const SERVER_URL = "http://localhost:8000/command"
 export const CommandPrompt = () =>{
     const [currentCommand, setCurrentCommand] = useState('')
-    const { setOperation, setStatus, setLoading, setServerActive, setTranscription } = useCommandContext()
+    const { setOperation, setStatus, setLoading, setServerActive, setTranscription, setLinks } = useCommandContext()
     const { historyItems, setHistoryItems } = useCommandHistory()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setCurrentCommand(e.target.value)
@@ -43,7 +43,9 @@ export const CommandPrompt = () =>{
             setTranscription("")
             setStatus(res.data.status)
             setOperation(res.data.operation)
-            
+
+            console.log(res.data.cache.links)
+            setLinks(res.data.cache.links)
             setHistoryItems([{ command: res.data.operation, status: 200 }, ...historyItems])
           } catch (error) {
             setLoading(false)

@@ -6,8 +6,10 @@ import ResponseLink from "../ResponseLink"
 import { motion } from "framer-motion"
 
 export const ResponseInfo = () =>{
-    const [responseLinks, setResponseLinks] = useState<string[]>([])
+    const { links } = useCommandContext()
     const { operation, transcription } = useCommandContext()
+
+    console.log(links)
 
     const getText = (text: string) =>{
         if(text.length <= 15) return text
@@ -18,13 +20,15 @@ export const ResponseInfo = () =>{
         <motion.div className="response-info">
             <div className="overlap-3">
                 <div className="additional-info" />
-                {responseLinks.length === 0 && (
-                    <motion.div className="no-additional-info">
-                        There is no additional content to show 
-                    </motion.div>
-                )}
-                    {/* <ResponseLink /> */}
+                    {links.length === 0 && (
+                        <motion.div className="no-additional-info">
+                            There is no additional content to show 
+                        </motion.div>
+                    )}
                 </div>
+                <div className="response-links">
+                        {links.map(link => <ResponseLink link={link} />)}
+                    </div>
                 <div className="overlap-4">
                     <div className="response-command">
                         <IconOutlineChat />
