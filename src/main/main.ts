@@ -115,6 +115,10 @@ const createWindow = async () => {
     resizable: true,
     width: 600,
     height: 620,
+    maxWidth: 600,
+    maxHeight: 620,
+    minWidth: 600,
+    minHeight: 620,
     alwaysOnTop: true,
     icon: getAssetPath('icon.ico'),
     webPreferences: {

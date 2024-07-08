@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useCommandContext } from "../../contexts/CommandContext"
 import { IconOutlineChat } from "../Icons/IconOutlineChat"
 import { IconOutlineVolume } from "../Icons/IconOutlineVolume"
@@ -5,6 +6,7 @@ import ResponseLink from "../ResponseLink"
 import { motion } from "framer-motion"
 
 export const ResponseInfo = () =>{
+    const [responseLinks, setResponseLinks] = useState<string[]>([])
     const { operation, transcription } = useCommandContext()
 
     const getText = (text: string) =>{
@@ -16,6 +18,11 @@ export const ResponseInfo = () =>{
         <motion.div className="response-info">
             <div className="overlap-3">
                 <div className="additional-info" />
+                {responseLinks.length === 0 && (
+                    <motion.div className="no-additional-info">
+                        There is no additional content to show 
+                    </motion.div>
+                )}
                     {/* <ResponseLink /> */}
                 </div>
                 <div className="overlap-4">

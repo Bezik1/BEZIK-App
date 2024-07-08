@@ -17,8 +17,8 @@ export const Line = ({ className }: Props): JSX.Element => {
     >
       <defs>
         <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#864261" />
-          <stop offset="100%" stopColor="#FC1F87" />
+          <stop offset="0%" stopColor="#fff" />
+          <stop offset="100%" stopColor="#fff" />
         </linearGradient>
       </defs>
       <motion.path

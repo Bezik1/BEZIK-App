@@ -9,11 +9,14 @@ import { IconOutlineX } from "../Icons/IconOutlineX";
 import { LightBulb } from "../Icons/LightBulb";
 
 import LOGO_PATH from "../../assets/img/logo.svg"
+import { ThemeIcon } from "../Icons/ThemeIcon";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const Navbar = () => {
     const { status } = useCommandContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [microphoneAccess, setMicrophoneAccess] = useState(false);
+    const { theme, setTheme } = useThemeContext()
 
     useEffect(() => {
         const checkMicrophoneAccess = async () => {
@@ -68,12 +71,18 @@ export const Navbar = () => {
                 className="side-menu"
                 initial={{ x: "-100%" }}
                 animate={{ x: isMenuOpen ? 0 : "-100%" }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                transition={{ stiffness: 300, damping: 30 }}
             >
                 <div className="menu-content">
-                    <p>Menu Option 1</p>
-                    <p>Menu Option 2</p>
-                    <p>Menu Option 3</p>
+                    <div 
+                        className="menu-el"
+                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                    >
+                        <div className="menu-icon">
+                            <ThemeIcon theme={theme}/>
+                        </div>
+                        <p>Theme</p>
+                    </div>
                 </div>
             </motion.div>
         </div>

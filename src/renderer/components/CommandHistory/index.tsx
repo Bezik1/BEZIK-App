@@ -57,6 +57,16 @@ export const CommandHistory = () => {
             <HistoryItem command={command} status={status} />
           </motion.div>
         ))}
+        {historyItems.length === 0 && (
+          <motion.div className="no-history">
+            There is no command in history
+          </motion.div>
+        )}
+        {historyItemsShowed.length === 0 && historyItems.length !== 0 && (
+          <motion.div className="no-history">
+            There is no command in history that fits this description
+          </motion.div>
+        )}
       </div>
     </div>
   );

@@ -4,8 +4,9 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 */
 
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import { motion } from "framer-motion";
 
 interface Props {
   state: "step-4" | "step-1" | "step-5" | "end" | "step-2" | "step-3" | "start";
@@ -18,7 +19,6 @@ interface Props {
 }
 
 export const SoundIcon = ({
-  state,
   className,
   soundLineClassName,
   soundLineClassNameOverride,
@@ -26,17 +26,45 @@ export const SoundIcon = ({
   divClassNameOverride,
   soundLineClassName1,
 }: Props): JSX.Element => {
+  const [hovered, setHovered] = useState(false)
+
   return (
-    <div className={`sound-icon ${className}`}>
-      <div className={`sound-line ${state} ${soundLineClassName}`} />
-      <div className={`sound-line-1 state-${state} ${soundLineClassNameOverride}`} />
-      <div className={`sound-line-2 state-${state} ${divClassName}`} />
-      <div className={`sound-line-3 state-${state} ${divClassNameOverride}`} />
-      <div className={`sound-line-4 state-${state} ${soundLineClassName1}`} />
+    <div className={`sound-icon ${className}`} onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
+      <motion.div 
+        className={`sound-line ${soundLineClassName}`}
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
+        exit={{ scaleY: 1 }}
+        transition={{ duration: 0.5, }}
+      />
+      <motion.div 
+        className={`sound-line-1 ${soundLineClassNameOverride}`}
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
+        exit={{ scaleY: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      />
+      <motion.div 
+        className={`sound-line-2 ${divClassName}`}
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
+        exit={{ scaleY: 1 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      />
+      <motion.div 
+        className={`sound-line-3 ${divClassNameOverride}`}
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
+        exit={{ scaleY: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+      />
+      <motion.div 
+        className={`sound-line-4 ${soundLineClassName1}`}
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
+        exit={{ scaleY: 1 }}
+        transition={{ duration: 0.5, delay: 1.4 }}
+      />
     </div>
   );
-};
-
-SoundIcon.propTypes = {
-  state: PropTypes.oneOf(["step-4", "step-1", "step-5", "end", "step-2", "step-3", "start"]),
 };
