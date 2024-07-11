@@ -12,7 +12,7 @@ interface Props {
 export const HistoryInfoCommand = ({ className }: Props): JSX.Element => {
   return (
     <svg
-      className={`history-info-command ${className}`}
+      className={`${className}`}
       fill="none"
       height="20"
       viewBox="0 0 21 20"

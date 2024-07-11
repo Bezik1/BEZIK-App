@@ -11,12 +11,20 @@ import { LightBulb } from "../Icons/LightBulb";
 import LOGO_PATH from "../../assets/img/logo.svg"
 import { ThemeIcon } from "../Icons/ThemeIcon";
 import { useThemeContext } from "../../contexts/ThemeContext";
+import { IconOutline } from "../Icons/IconOutline";
+import { useChat } from "../../contexts/ChatContext";
+import { HomeIcon } from "../Icons/HomeIcon";
 
 export const Navbar = () => {
+    const { active, setActive } = useChat()
     const { status } = useCommandContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [microphoneAccess, setMicrophoneAccess] = useState(false);
     const { theme, setTheme } = useThemeContext()
+
+    const [themeIconHovered, setThemeIconHovered] = useState(false)
+    const [terminalIconHovered, setTerminalIconHovered] = useState(false)
+    const [homeIconHovered, setHomeIconHovered] = useState(false)
 
     useEffect(() => {
         const checkMicrophoneAccess = async () => {
@@ -76,12 +84,41 @@ export const Navbar = () => {
                 <div className="menu-content">
                     <div 
                         className="menu-el"
+                        onPointerOver={() => setThemeIconHovered(true)}
+                        onPointerLeave={() => setThemeIconHovered(false)}
                         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                     >
                         <div className="menu-icon">
-                            <ThemeIcon theme={theme}/>
+                            <ThemeIcon theme={theme} hovered={themeIconHovered}/>
                         </div>
                         <p>Theme</p>
+                    </div>
+                    <div className="menu-el"
+                        onPointerOver={() => setHomeIconHovered(true)}
+                        onPointerLeave={() => setHomeIconHovered(false)}
+                        onClick={() => setActive(false)}
+                    >
+                        <div className="menu-icon">
+                            <HomeIcon 
+                                className="menu-icon" 
+                                hovered={homeIconHovered}
+                            />
+                        </div>
+                        <p>Home</p>
+                    </div>
+                    <div className="menu-el"
+                        onPointerOver={() => setTerminalIconHovered(true)}
+                        onPointerLeave={() => setTerminalIconHovered(false)}
+                        onClick={() => setActive(true)}
+                    >
+                        <div className="menu-icon">
+                            <IconOutline
+                                className="menu-icon" 
+                                hovered={terminalIconHovered}
+                                stokeWidth={2}
+                            />
+                        </div>
+                        <p>Informations</p>
                     </div>
                 </div>
             </motion.div>

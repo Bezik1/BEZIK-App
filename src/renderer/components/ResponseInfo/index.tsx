@@ -27,7 +27,7 @@ export const ResponseInfo = () =>{
                     )}
                 </div>
                 <div className="response-links">
-                        {links.map(link => <ResponseLink link={link} />)}
+                        {links.map((link, i) => i < 6 && <ResponseLink link={link} />)}
                     </div>
                 <div className="overlap-4">
                     <div className="response-command">

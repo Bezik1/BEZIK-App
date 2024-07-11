@@ -11,6 +11,7 @@ const CommandContext = createContext<{
     serverAcitve: boolean, setServerActive: React.Dispatch<React.SetStateAction<boolean>> | undefined,
     transcription: string, setTranscription: React.Dispatch<React.SetStateAction<string>> | undefined,
     links: string[], setLinks: React.Dispatch<React.SetStateAction<string[]>> | undefined,
+    information: string, setInformation: React.Dispatch<React.SetStateAction<string>> | undefined,
 }>({
     operation: 'Server Disabled',
     status: 500,
@@ -23,7 +24,9 @@ const CommandContext = createContext<{
     transcription: '',
     setTranscription: undefined,
     links: [], 
-    setLinks: undefined
+    setLinks: undefined,
+    information: '',
+    setInformation: undefined,
 })
 
 export const CommandProvider = ({ children } : ParentProps) =>{
@@ -33,6 +36,7 @@ export const CommandProvider = ({ children } : ParentProps) =>{
     const [loading, setLoading] = useState(false)
     const [serverAcitve, setServerActive] = useState(false)
     const [transcription, setTranscription] = useState('')
+    const [information, setInformation] = useState('')
 
     return (
         <CommandContext.Provider value={{
@@ -42,6 +46,7 @@ export const CommandProvider = ({ children } : ParentProps) =>{
             serverAcitve, setServerActive, 
             transcription, setTranscription,
             links, setLinks,
+            information, setInformation,
         }}>
             { children }
         </CommandContext.Provider>
@@ -55,6 +60,7 @@ export const useCommandContext= () =>{
             serverAcitve, setServerActive, 
             transcription, setTranscription,
             links, setLinks,
+            information, setInformation,
         } = useContext(CommandContext)
 
     if(typeof setOperation === 'undefined' || 
@@ -62,7 +68,8 @@ export const useCommandContext= () =>{
         typeof setLoading === 'undefined' || 
         typeof setServerActive === 'undefined' || 
         typeof setTranscription === 'undefined' ||
-        typeof setLinks === "undefined"
+        typeof setLinks === "undefined" ||
+        typeof setInformation === "undefined"
     ) 
         throw new Error('Element is outside Command Provider')
 
@@ -72,5 +79,6 @@ export const useCommandContext= () =>{
             serverAcitve, setServerActive, 
             transcription, setTranscription,
             links, setLinks,
+            information, setInformation,
         }
 }

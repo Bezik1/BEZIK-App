@@ -1,15 +1,18 @@
 .light-bulb {
+  transition: .5s;
   height: 13px;
   width: 13px;
 }
 
 .light-bulb .overlap-group {
+  transition: .5s;
   border-radius: 6.67px/6.55px;
   height: 13px;
   position: relative;
 }
 
 .light-bulb .ellipse {
+  transition: .5s;
   background-color: #6fff6c;
   border-radius: 5px/4.91px;
   height: 10px;
@@ -20,6 +23,7 @@
 }
 
 .light-bulb .ellipse-2 {
+  transition: .5s;
   background-color: #6fff6c;
   border-radius: 6.67px/6.55px;
   filter: blur(20px);

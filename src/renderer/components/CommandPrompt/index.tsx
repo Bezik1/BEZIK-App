@@ -9,7 +9,14 @@ import { motion } from "framer-motion"
 const SERVER_URL = "http://localhost:8000/command"
 export const CommandPrompt = () =>{
     const [currentCommand, setCurrentCommand] = useState('')
-    const { setOperation, setStatus, setLoading, setServerActive, setTranscription, setLinks } = useCommandContext()
+    const { setOperation, 
+            setStatus, 
+            setLoading, 
+            setServerActive, 
+            setTranscription, 
+            setLinks,
+            setInformation
+    } = useCommandContext()
     const { historyItems, setHistoryItems } = useCommandHistory()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setCurrentCommand(e.target.value)
@@ -23,6 +30,13 @@ export const CommandPrompt = () =>{
     
         return () => window.removeEventListener("keydown", handleKeyPress)
       }, [currentCommand])
+    
+    const getFilteredText = (text: string) =>{
+      return text
+        .replace("Tłumaczenie z języka angielskiego-", "")
+        .replace("Wikipedia", "")
+        .replace("(z języka angielskiego", "")
+    }
 
     const handleSubmit = async () =>{
         if(currentCommand.length === 0) {
@@ -44,8 +58,10 @@ export const CommandPrompt = () =>{
             setStatus(res.data.status)
             setOperation(res.data.operation)
 
-            console.log(res.data.cache.links)
-            setLinks(res.data.cache.links)
+            if(res.data.cache.links) setLinks(res.data.cache.links)
+            if(res.data.cache.informations) setInformation(getFilteredText(res.data.cache.informations))
+              
+
             setHistoryItems([{ command: res.data.operation, status: 200 }, ...historyItems])
           } catch (error) {
             setLoading(false)
@@ -53,6 +69,9 @@ export const CommandPrompt = () =>{
             setTranscription("")
             setOperation("Connection Error")
             setServerActive(false)
+
+            setInformation("")
+            setLinks([])
             setHistoryItems([{ command: "command failed", status: 500 }, ...historyItems])
           }
     }
@@ -69,6 +88,10 @@ export const CommandPrompt = () =>{
               console.log(res.data.transcription)
               setOperation(res.data.operation)
               setTranscription(res.data.transcription)
+
+              if(res.data.cache.links) setLinks(res.data.cache.links)
+              if(res.data.cache.informations) setInformation(getFilteredText(res.data.cache.informations))
+              
               setHistoryItems([{ command: res.data.operation, status: 200 }, ...historyItems])
               setStatus(res.data.status)
               setServerActive(true)
@@ -78,6 +101,8 @@ export const CommandPrompt = () =>{
               setHistoryItems([{ command: "Unrecognized Text", status: 200 }, ...historyItems])
               setStatus(response.data.status)
               setOperation(response.data.operation)
+              setInformation("")
+              setLinks([])
           }
         } catch (error) {
               setStatus(500)

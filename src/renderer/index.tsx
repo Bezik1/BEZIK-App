@@ -5,15 +5,18 @@ import "./index.css"
 import { ThemeProvider } from './contexts/ThemeContext';
 import { CommandProvider } from './contexts/CommandContext';
 import { CommandHistoryProvider } from './contexts/CommandHistoryContext';
+import { ChatProvider } from './contexts/ChatContext';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
 root.render(
     <CommandHistoryProvider>
         <ThemeProvider>
-            <CommandProvider>
-                <App />
-            </CommandProvider>
+            <ChatProvider>
+                <CommandProvider>
+                    <App />
+                </CommandProvider>
+            </ChatProvider>
         </ThemeProvider>
     </CommandHistoryProvider>
 );

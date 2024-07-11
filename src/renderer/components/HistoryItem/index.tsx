@@ -14,7 +14,7 @@ export const HistoryItem = ({ command, status } : { command: string, status: num
             <div className="history-item-2" />
             <div className="history-item-text">{command}</div>
             <div className="command-history-2">{status}</div>
-            <IconOutline className="icon-outline-terminal" />
+            <IconOutline className="icon-outline icon-outline-terminal" />
             <HistoryInfoCommand className="history-info-command" />
             </div>
         </motion.div>
