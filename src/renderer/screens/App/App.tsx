@@ -12,12 +12,31 @@ import { useState } from "react";
 import { useCommandContext } from "../../contexts/CommandContext";
 import { motion } from "framer-motion";
 import { HistoryInfoCommand } from "../../icons/HistoryInfoCommand";
+import Packages from "../../components/Packages";
 
 export const App = (): JSX.Element => {
   const [prevInfo, setPrevInfo] = useState("")
   const { information } = useCommandContext()
   const { active } = useChat()
 
+  const mapActive = () =>{
+    switch(active) {
+      case "home":
+        return (
+          <>
+            <ServerInfo />
+            <ResponseInfo />
+            <CommandHistory />
+          </>
+        )
+      case "informations":
+        return <Chat />
+      case "packages":
+        return <Packages />
+      default:
+        return <></>
+    }
+  }
 
   return (
     <div className="app">
@@ -38,12 +57,7 @@ export const App = (): JSX.Element => {
               <HistoryInfoCommand className="notification-icon" />
             </motion.div> */}
             <CommandPrompt />
-            {active ? <Chat /> :
-            <>
-              <ServerInfo />
-              <ResponseInfo />
-              <CommandHistory />
-            </>}
+            {mapActive()}
           </div>
         </div>
         <Navbar />

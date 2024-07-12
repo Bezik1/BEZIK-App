@@ -14,6 +14,7 @@ import { useThemeContext } from "../../contexts/ThemeContext";
 import { IconOutline } from "../Icons/IconOutline";
 import { useChat } from "../../contexts/ChatContext";
 import { HomeIcon } from "../Icons/HomeIcon";
+import { PackagesIcon } from "../Icons/PackagesIcon";
 
 export const Navbar = () => {
     const { active, setActive } = useChat()
@@ -24,6 +25,7 @@ export const Navbar = () => {
 
     const [themeIconHovered, setThemeIconHovered] = useState(false)
     const [terminalIconHovered, setTerminalIconHovered] = useState(false)
+    const [packagesIconHovered, setPackagesIconHovered] = useState(false)
     const [homeIconHovered, setHomeIconHovered] = useState(false)
 
     useEffect(() => {
@@ -96,7 +98,7 @@ export const Navbar = () => {
                     <div className="menu-el"
                         onPointerOver={() => setHomeIconHovered(true)}
                         onPointerLeave={() => setHomeIconHovered(false)}
-                        onClick={() => setActive(false)}
+                        onClick={() => setActive('home')}
                     >
                         <div className="menu-icon">
                             <HomeIcon 
@@ -109,16 +111,29 @@ export const Navbar = () => {
                     <div className="menu-el"
                         onPointerOver={() => setTerminalIconHovered(true)}
                         onPointerLeave={() => setTerminalIconHovered(false)}
-                        onClick={() => setActive(true)}
+                        onClick={() => setActive('informations')}
                     >
                         <div className="menu-icon">
                             <IconOutline
                                 className="menu-icon" 
                                 hovered={terminalIconHovered}
-                                stokeWidth={2}
+                                stokeWidth={1}
                             />
                         </div>
                         <p>Informations</p>
+                    </div>
+                    <div className="menu-el"
+                        onPointerOver={() => setPackagesIconHovered(true)}
+                        onPointerLeave={() => setPackagesIconHovered(false)}
+                        onClick={() => setActive('packages')}
+                    >
+                        <div className="menu-icon">
+                            <PackagesIcon
+                                className="menu-icon" 
+                                hovered={packagesIconHovered}
+                            />
+                        </div>
+                        <p>Packages</p>
                     </div>
                 </div>
             </motion.div>

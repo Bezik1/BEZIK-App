@@ -35,7 +35,7 @@ export const IconOutline = ({ className, hovered, stokeWidth=1 }: Props): JSX.El
       initial={{ pathLength: 1 }}
       animate={{ pathLength: hovered ? [0, 1] : 1 }}
       key={hovered ? "hovered-terminal" : "not-hovered-terminal"}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 0.75, ease: "easeInOut" }}
     />
   </motion.svg>
   )

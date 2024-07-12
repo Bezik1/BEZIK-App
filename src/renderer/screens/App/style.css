@@ -643,6 +643,7 @@
 }
 
 .side-menu {
+  z-index: 10;
   position: fixed;
   top: 66px;
   left: 0;

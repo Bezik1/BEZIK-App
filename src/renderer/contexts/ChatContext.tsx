@@ -4,13 +4,13 @@ type ParentProps = {
     children: React.ReactNode | React.ReactNode[]
 }
 
-const ChatContext = createContext<{ active: boolean, setActive: React.Dispatch<React.SetStateAction<boolean>> | undefined}>({
-    active: false,
+const ChatContext = createContext<{ active: string, setActive: React.Dispatch<React.SetStateAction<string>> | undefined}>({
+    active: 'packages',
     setActive: undefined,
 })
 
 export const ChatProvider = ({ children } : ParentProps) =>{
-    const [active, setActive] = useState(false)
+    const [active, setActive] = useState('packages')
 
     return (
         <ChatContext.Provider value={{active, setActive}}>

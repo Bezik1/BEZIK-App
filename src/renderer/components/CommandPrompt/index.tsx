@@ -18,6 +18,7 @@ export const CommandPrompt = () =>{
             setInformation
     } = useCommandContext()
     const { historyItems, setHistoryItems } = useCommandHistory()
+    const [submitHovered, setSubmitHovered] = useState(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setCurrentCommand(e.target.value)
 
@@ -118,7 +119,16 @@ export const CommandPrompt = () =>{
         <div className="command-prompt">
             <div className="overlap-group-2">
             <input className="text-wrapper" placeholder="Enter Command" onChange={handleChange}/>
-            <div onClick={handleSubmit}><IconOutlinePaperAirplane1 className="icon-outline-paper" /></div>
+            <div 
+              onClick={handleSubmit}
+              onPointerOver={() => setSubmitHovered(true)}
+              onPointerLeave={() => setSubmitHovered(false)}
+            >
+              <IconOutlinePaperAirplane1
+                hovered={submitHovered}
+                className="icon-outline-paper" 
+              />
+            </div>
             <div onClick={handleVoiceClick}>
               <SoundIcon
                 className="sound-icon-instance"

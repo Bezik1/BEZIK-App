@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 interface Props {
-  className: any;
+  className: any
+  hovered: boolean
 }
 
-export const IconOutlinePaperAirplane1 = ({ className }: Props): JSX.Element => {
+export const IconOutlinePaperAirplane1 = ({ className, hovered }: Props): JSX.Element => {
 
   return (
     <motion.svg
@@ -19,12 +20,12 @@ export const IconOutlinePaperAirplane1 = ({ className }: Props): JSX.Element => 
       <motion.path
         className="path"
         d="M4.50016 10.2532L2.83349 17.6221L17.8335 10.2532L2.83349 2.88416L4.50016 10.2532ZM4.50016 10.2532H11.1668"
-        stroke="white"
+        stroke="#fff"
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        animate={{ pathLength: hovered ? [0, 1] : 1 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
       />
     </motion.svg>
   );

@@ -9,7 +9,7 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, webContents  } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import { resolveHtmlPath } from './util';
@@ -35,7 +35,6 @@ ipcMain.on('ipc-close', async () => {
   mainWindow?.close()
   app.quit()
   pythonServerProcess.kill();
-  pythonDependenciesProcess.kill()
   exec('taskkill /F /IM python.exe')
 });
 
@@ -74,18 +73,8 @@ const pythonServerScript = app.isPackaged
 
 const pythonDependenciesScript = app.isPackaged
   ? path.join(process.resourcesPath, 'Model/install.py')
-  : path.join(__dirname, '../../Model/index.py')
+  : path.join(__dirname, '../../Model/install.py')
 
-
-const pythonDependenciesProcess = exec(`python ${pythonDependenciesScript}`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log("Dependencies installed succesfully")
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-});
 
 const pythonServerProcess = exec(`python ${pythonServerScript}`, (error, stdout, stderr) => {
   if (error) {
@@ -146,8 +135,37 @@ const createWindow = async () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
     pythonServerProcess.kill();
-    pythonDependenciesProcess.kill()
   });
+
+  let pythonDependenciesProcess: any = undefined
+
+  ipcMain.on("ipc-install", async (event, arg) =>{
+    pythonDependenciesProcess = exec(`python ${pythonDependenciesScript}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      
+      event.reply("ipc-install", {status: 200})
+      console.log("Dependencies installed succesfully")
+      console.log(`stdout: ${stdout}`);
+      console.log("pid", pythonDependenciesProcess.pid)
+      console.error(`stderr: ${stderr}`);
+  });
+  })
+
+  ipcMain.on("ipc-run", async (event, arg) =>{
+    exec(`python ${pythonServerScript}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+
+      event.reply("ipc-run", {status: 200})
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    });
+  })
 
   mainWindow.setMenu(null);
 
@@ -173,7 +191,6 @@ app.on('window-all-closed', () => {
   // after all windows have been closed
   if (process.platform !== 'darwin') {
     pythonServerProcess.kill();
-    pythonDependenciesProcess.kill()
     app.quit();
   }
 });
