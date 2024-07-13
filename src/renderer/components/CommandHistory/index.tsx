@@ -3,6 +3,7 @@ import { HistoryItem } from "../HistoryItem";
 import { IconOutlineSearch } from "../Icons/IconOutlineSearch";
 import { useCommandHistory } from "../../contexts/CommandHistoryContext";
 import { motion } from "framer-motion";
+import "./style.css"
 
 import SEARCH_UNDERLINE_PATH from "../../assets/img/searchbar-underline.svg"
 

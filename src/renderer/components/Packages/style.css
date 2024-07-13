@@ -115,6 +115,31 @@
     gap: 10px;
 }
 
+.packages-status-btn-inactive {
+    transition: .5s;
+    cursor: default;
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #8c8c8c;
+    height: 33.3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.packages-status-btn-inactive .packages-status-icon {
+    color: #8c8c8c;
+}
+
+.packages-status-btn-inactive .package-run-icon {
+    color: #8c8c8c;
+}
+
+.packages-status-btn-inactive .package-status-text {
+    color: #8c8c8c;
+}
+
 .packages-status-btn:hover {
     transition: .5s;
     transform: scale(1.05);

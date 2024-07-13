@@ -4,6 +4,7 @@ import { IconOutlineChat } from "../Icons/IconOutlineChat"
 import { IconOutlineVolume } from "../Icons/IconOutlineVolume"
 import ResponseLink from "../ResponseLink"
 import { motion } from "framer-motion"
+import "./style.css"
 
 export const ResponseInfo = () =>{
     const { links } = useCommandContext()

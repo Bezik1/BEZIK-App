@@ -3,6 +3,7 @@ import { IconOutlineChip } from "../Icons/IconOutlineChip"
 import { StatusInfoIcon } from "../Icons/StatusInfoIcon"
 import axios from "axios";
 import { useCommandContext } from "../../contexts/CommandContext";
+import "./style.css"
 
 export const ServerInfo = () =>{
     const { setLoading, setServerActive, serverAcitve, status, setStatus, operation } = useCommandContext()

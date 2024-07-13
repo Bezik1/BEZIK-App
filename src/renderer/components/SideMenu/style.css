@@ -1,0 +1,48 @@
+
+.side-menu {
+    z-index: 10;
+    position: fixed;
+    top: 66px;
+    left: 0;
+    width: 250px;
+    height: 90vh;
+    background-color: #210c16c5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .menu-el {
+    cursor: pointer;
+    transition: .5s;
+    color: #fff;
+    opacity: 60%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-start;
+  }
+  
+  .menu-el:hover {
+    transition: .5s;
+    opacity: 100%;
+  }
+  
+  .menu-icon {
+    color: #fff;
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .menu-content {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .options {
+    z-index: 2;
+    cursor: pointer;
+  }

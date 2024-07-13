@@ -1,5 +1,6 @@
 import { IconOutlineGlobe } from "../Icons/IconOutlineGlobe"
 import { motion } from "framer-motion"
+import "./style.css"
 
 const ResponseLink = ({ link="https://minecraft.com" } : { link?: string}) =>{
     return (

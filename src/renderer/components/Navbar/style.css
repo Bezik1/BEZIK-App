@@ -1,0 +1,81 @@
+.drag-area {
+    z-index: 10;
+    -webkit-app-region: drag;
+    width: 280px;
+    height: 60px;
+    position: absolute;
+    left: 210px;
+  }
+  
+  .app .navbar {
+    background-color: #fe9cc61a;
+    height: 66px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 600px;
+  }
+  
+  .app .icon-outline-view-grid {
+    left: 67px !important;
+    top: 17px !important;
+  }
+  
+  .app .icon-outline-server-instance {
+    left: 108px !important;
+    top: 17px !important;
+  }
+  
+  .app .overlap-6 {
+    height: 31px;
+    left: 160px;
+    position: absolute;
+    top: 17px;
+    width: 43px;
+  }
+  
+  .app .light-bulb-instance {
+    left: 29px !important;
+    position: absolute !important;
+    top: 9px !important;
+  }
+  
+  .app .logo {
+    height: 39px;
+    left: 17px;
+    position: absolute;
+    top: 13px;
+    width: 40px;
+  }
+  
+  .app .icon-outline-x-instance {
+    cursor: pointer;
+    left: 548px !important;
+    top: 17px !important;
+    transition: .5s;
+  }
+  
+  .app .icon-outline-x-instance:hover {
+    transition: .5s;
+    scale: 1.3;
+  }
+  
+  .app .icon-outline-minus-instance {
+    cursor: pointer;
+    left: 500px !important;
+    position: absolute !important;
+    top: 17px !important;
+    transition: .5s;
+    scale: 1.3;
+  }
+  
+  .app .icon-outline-minus-instance:hover {
+    transition: .5s;
+    scale: 1.6;
+  }
+  
+  .app .light-bulb-2 {
+    left: 140px !important;
+    position: absolute !important;
+    top: 26px !important;
+  }

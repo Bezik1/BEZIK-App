@@ -2,6 +2,8 @@ import { HistoryInfoCommand } from "../../icons/HistoryInfoCommand"
 import { IconOutline } from "../Icons/IconOutline"
 import { motion } from "framer-motion"
 
+import "./style.css"
+
 export const HistoryItem = ({ command, status } : { command: string, status: number }) =>{
     return (
         <motion.div 

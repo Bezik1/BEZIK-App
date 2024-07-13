@@ -5,6 +5,7 @@ import { SoundIcon } from "../Icons/SoundIcon"
 import axios from "axios"
 import { useCommandHistory } from "../../contexts/CommandHistoryContext"
 import { motion } from "framer-motion"
+import "./style.css"
 
 const SERVER_URL = "http://localhost:8000/command"
 export const CommandPrompt = () =>{

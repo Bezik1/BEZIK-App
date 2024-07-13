@@ -9,24 +9,14 @@ import { IconOutlineX } from "../Icons/IconOutlineX";
 import { LightBulb } from "../Icons/LightBulb";
 
 import LOGO_PATH from "../../assets/img/logo.svg"
-import { ThemeIcon } from "../Icons/ThemeIcon";
-import { useThemeContext } from "../../contexts/ThemeContext";
-import { IconOutline } from "../Icons/IconOutline";
-import { useChat } from "../../contexts/ChatContext";
-import { HomeIcon } from "../Icons/HomeIcon";
-import { PackagesIcon } from "../Icons/PackagesIcon";
+
+import "./style.css"
+import { SideMenu } from "../SideMenu";
 
 export const Navbar = () => {
-    const { active, setActive } = useChat()
     const { status } = useCommandContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [microphoneAccess, setMicrophoneAccess] = useState(false);
-    const { theme, setTheme } = useThemeContext()
-
-    const [themeIconHovered, setThemeIconHovered] = useState(false)
-    const [terminalIconHovered, setTerminalIconHovered] = useState(false)
-    const [packagesIconHovered, setPackagesIconHovered] = useState(false)
-    const [homeIconHovered, setHomeIconHovered] = useState(false)
 
     useEffect(() => {
         const checkMicrophoneAccess = async () => {
@@ -76,67 +66,7 @@ export const Navbar = () => {
                 <IconOutlineMinus className="icon-outline-minus-instance" />
             </div>
             <LightBulb status={status} className="light-bulb-2" />
-            
-            <motion.div
-                className="side-menu"
-                initial={{ x: "-100%" }}
-                animate={{ x: isMenuOpen ? 0 : "-100%" }}
-                transition={{ stiffness: 300, damping: 30 }}
-            >
-                <div className="menu-content">
-                    <div 
-                        className="menu-el"
-                        onPointerOver={() => setThemeIconHovered(true)}
-                        onPointerLeave={() => setThemeIconHovered(false)}
-                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                    >
-                        <div className="menu-icon">
-                            <ThemeIcon theme={theme} hovered={themeIconHovered}/>
-                        </div>
-                        <p>Theme</p>
-                    </div>
-                    <div className="menu-el"
-                        onPointerOver={() => setHomeIconHovered(true)}
-                        onPointerLeave={() => setHomeIconHovered(false)}
-                        onClick={() => setActive('home')}
-                    >
-                        <div className="menu-icon">
-                            <HomeIcon 
-                                className="menu-icon" 
-                                hovered={homeIconHovered}
-                            />
-                        </div>
-                        <p>Home</p>
-                    </div>
-                    <div className="menu-el"
-                        onPointerOver={() => setTerminalIconHovered(true)}
-                        onPointerLeave={() => setTerminalIconHovered(false)}
-                        onClick={() => setActive('informations')}
-                    >
-                        <div className="menu-icon">
-                            <IconOutline
-                                className="menu-icon" 
-                                hovered={terminalIconHovered}
-                                stokeWidth={1}
-                            />
-                        </div>
-                        <p>Informations</p>
-                    </div>
-                    <div className="menu-el"
-                        onPointerOver={() => setPackagesIconHovered(true)}
-                        onPointerLeave={() => setPackagesIconHovered(false)}
-                        onClick={() => setActive('packages')}
-                    >
-                        <div className="menu-icon">
-                            <PackagesIcon
-                                className="menu-icon" 
-                                hovered={packagesIconHovered}
-                            />
-                        </div>
-                        <p>Packages</p>
-                    </div>
-                </div>
-            </motion.div>
+            <SideMenu isMenuOpen={isMenuOpen} />
         </div>
     );
 };

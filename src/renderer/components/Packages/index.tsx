@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useCommandContext } from "../../contexts/CommandContext"
 import { PackageStatusIcon } from "../Icons/PackageStatusIcon"
-import "./index.css"
 import axios from "axios"
 import { PackagesGetIcon } from "../Icons/PackagesGetIcon"
 import { ServerRunIcon } from "../Icons/ServerRunIcon"
+import "./style.css"
 
 const Packages = () =>{
     const [packagesMatch, setPackagesMatch] = useState(false)
@@ -54,6 +54,8 @@ const Packages = () =>{
     }, [requiredPackages, packages])
 
     const installPackages = async () => {
+        if(packagesMatch) return;
+
         try {
             setLoading(true)
             window.electron.ipcRenderer.once('ipc-install', (arg: any) => {
@@ -68,6 +70,7 @@ const Packages = () =>{
       };
 
       const runServer = async () => {
+        if(serverAcitve) return;
         try {
             setLoading(true)
             window.electron.ipcRenderer.once('ipc-run', (arg: any) => {
@@ -90,7 +93,7 @@ const Packages = () =>{
                         <PackageStatusIcon className="packages-status-icon"/>
                         <div className="package-status-text">Packages {packagesMatch ? "Installed" : "Missing"}</div>
                     </div>
-                    <div className="packages-status-btn" onClick={installPackages}>
+                    <div className={packagesMatch ? "packages-status-btn-inactive" : "packages-status-btn"} onClick={installPackages}>
                         <PackagesGetIcon className="packages-status-icon" />
                         <div className="package-status-text">Install Packages</div>
                     </div>
@@ -100,7 +103,7 @@ const Packages = () =>{
                         <PackageStatusIcon className="packages-status-icon"/>
                         <div className="package-status-text">Server {serverAcitve ? "Active" : "Inactive"}</div>
                     </div>
-                    <div className="packages-status-btn" onClick={runServer}>
+                    <div className={serverAcitve ? "packages-status-btn-inactive" : "packages-status-btn"} onClick={runServer}>
                         <ServerRunIcon className="package-run-icon" />
                         <div className="package-status-text">Run Server</div>
                     </div>

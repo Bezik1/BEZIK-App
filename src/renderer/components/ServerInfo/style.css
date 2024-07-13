@@ -1,0 +1,67 @@
+.app .server-info {
+    height: 92px;
+    left: 21px;
+    position: absolute;
+    top: 33px;
+    width: 191px;
+  }
+  
+  .app .overlap-2 {
+    background-color: #763754;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px 1px #00000040;
+    height: 92px;
+    position: relative;
+    width: 185px;
+  }
+  
+  .app .status-info-icon-instance {
+    transition: .5s;
+    left: 20px !important;
+    top: 12px !important;
+  }
+  
+  .app .text-wrapper-2 {
+    color: #ffffff;
+    font-family: "Outfit", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 62px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+    width: 60px;
+  }
+  
+  .app .text-wrapper-3 {
+    color: #ffffff;
+    font-family: "Outfit", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 125px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+    width: 32px;
+  }
+  
+  .app .icon-outline-chip-instance {
+    transition: .5s;
+    left: 17px !important;
+    top: 47px !important;
+  }
+  
+  .app .text-wrapper-4 {
+    color: #ffffff;
+    font-family: "Outfit", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 62px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 53px;
+    width: 120px;
+  }
