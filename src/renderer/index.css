@@ -27,12 +27,3 @@ body {
     height: 10px;
     border-radius: 50px;
   }
-
-  ::placeholder {
-    color: #fff;
-    opacity: 1;
-  }
-  
-  ::-ms-input-placeholder {
-    color: #fff;
-  }

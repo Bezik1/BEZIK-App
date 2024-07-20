@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 interface Props {
   className: any
@@ -7,6 +8,7 @@ interface Props {
 }
 
 export const IconOutlinePaperAirplane1 = ({ className, hovered }: Props): JSX.Element => {
+  const { theme } = useThemeContext()
 
   return (
     <motion.svg
@@ -20,7 +22,7 @@ export const IconOutlinePaperAirplane1 = ({ className, hovered }: Props): JSX.El
       <motion.path
         className="path"
         d="M4.50016 10.2532L2.83349 17.6221L17.8335 10.2532L2.83349 2.88416L4.50016 10.2532ZM4.50016 10.2532H11.1668"
-        stroke="#fff"
+        stroke={theme === "light" ? "#000" : "#fff"}
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}

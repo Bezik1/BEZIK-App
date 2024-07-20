@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import "./style.css";
 import { motion } from "framer-motion";
+import { useThemeContext } from "../../../contexts/ThemeContext";
 
 interface Props {
   state: "step-4" | "step-1" | "step-5" | "end" | "step-2" | "step-3" | "start";
@@ -27,39 +28,40 @@ export const SoundIcon = ({
   soundLineClassName1,
 }: Props): JSX.Element => {
   const [hovered, setHovered] = useState(false)
+  const { theme } = useThemeContext()
 
   return (
     <div className={`sound-icon ${className}`} onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
       <motion.div 
-        className={`sound-line ${soundLineClassName}`}
+        className={`sound-line ${soundLineClassName} ${theme === "light" ? "sound-icon-light" : "sound-icon-dark"}`}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
         exit={{ scaleY: 1 }}
         transition={{ duration: 0.5, }}
       />
       <motion.div 
-        className={`sound-line-1 ${soundLineClassNameOverride}`}
+        className={`sound-line-1 ${soundLineClassNameOverride} ${soundLineClassName} ${theme === "light" ? "sound-icon-light" : "sound-icon-dark"}`}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
         exit={{ scaleY: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       />
       <motion.div 
-        className={`sound-line-2 ${divClassName}`}
+        className={`sound-line-2 ${divClassName} ${soundLineClassName} ${theme === "light" ? "sound-icon-light" : "sound-icon-dark"}`}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
         exit={{ scaleY: 1 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       />
       <motion.div 
-        className={`sound-line-3 ${divClassNameOverride}`}
+        className={`sound-line-3 ${divClassNameOverride} ${soundLineClassName} ${theme === "light" ? "sound-icon-light" : "sound-icon-dark"}`}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
         exit={{ scaleY: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
       />
       <motion.div 
-        className={`sound-line-4 ${soundLineClassName1}`}
+        className={`sound-line-4 ${soundLineClassName1} ${soundLineClassName} ${theme === "light" ? "sound-icon-light" : "sound-icon-dark"}`}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: [1, hovered ? 1.3 : 1, 1] }}
         exit={{ scaleY: 1 }}

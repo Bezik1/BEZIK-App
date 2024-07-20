@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import "./style.css"
 
 import SEARCH_UNDERLINE_PATH from "../../assets/img/searchbar-underline.svg"
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const CommandHistory = () => {
   const [historyItemsShowed, setHistoryItemsShowed] = useState<{ command: string, status: number }[]>([]);
   const { historyItems } = useCommandHistory();
+  const { theme } = useThemeContext()
 
   useEffect(() => {
     setHistoryItemsShowed(historyItems);
@@ -39,11 +41,20 @@ export const CommandHistory = () => {
   return (
     <div className="command-history">
       <div className="overlap-5">
-        <div className="history-background" />
+        <div className={`history-background ${theme === "light" ? "light-el" : "dark-el"}`} />
         <div className="searchbar">
           <IconOutlineSearch className="icon-outline-search-instance" />
-          <input className="text-wrapper-5" placeholder="Search Command" onChange={handleChange} />
-          <img className="searchbar-underline" alt="Searchbar underline" src={SEARCH_UNDERLINE_PATH} />
+          <input className={`text-wrapper-5 ${theme === "light" ? "dark" : "light"}`} placeholder="Search Command" onChange={handleChange} />
+          <svg width="258" className="searchbar-underline" height="3" viewBox="0 0 258 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line 
+              y1="-0.5" 
+              x1="-50.0"
+              x2="357.337" 
+              y2="-0.5" 
+              transform="matrix(0.999986 -0.00531598 0.00549618 0.999985 0.000244141 2.8427)" 
+              stroke={theme === "light" ? "#000" : "#fff"}
+            />
+          </svg>
         </div>
       </div>
       <div className="history-items">

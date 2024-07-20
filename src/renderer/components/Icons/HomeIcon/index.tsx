@@ -1,12 +1,15 @@
 import { motion } from "framer-motion"
+import { useThemeContext } from "../../../contexts/ThemeContext"
 
 export const HomeIcon = ({ className, hovered } : { className?: string, hovered: boolean }) =>{
+    const { theme } = useThemeContext()
+    
     return (
         <motion.svg 
             xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 24 24" 
             strokeWidth={1} 
-            stroke="currentColor"
+            stroke={theme === "light" ? "#000" : "#fff"}
             className={`size-6 ${className}`}
         >
             <motion.path

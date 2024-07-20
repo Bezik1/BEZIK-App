@@ -7,8 +7,17 @@
     left: 210px;
   }
   
-  .app .navbar {
+  .light-navbar {
+    background-color: #e1a1b0;
+    color: #fff;
+  }
+
+  .dark-navbar {
     background-color: #fe9cc61a;
+    color: #000;
+  }
+
+  .app .navbar {
     height: 66px;
     left: 0;
     position: absolute;

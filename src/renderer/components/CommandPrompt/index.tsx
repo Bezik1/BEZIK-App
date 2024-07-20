@@ -6,9 +6,11 @@ import axios from "axios"
 import { useCommandHistory } from "../../contexts/CommandHistoryContext"
 import { motion } from "framer-motion"
 import "./style.css"
+import { useThemeContext } from "../../contexts/ThemeContext"
 
 const SERVER_URL = "http://localhost:8000/command"
 export const CommandPrompt = () =>{
+    const { theme } = useThemeContext()
     const [currentCommand, setCurrentCommand] = useState('')
     const { setOperation, 
             setStatus, 
@@ -118,8 +120,8 @@ export const CommandPrompt = () =>{
 
     return (
         <div className="command-prompt">
-            <div className="overlap-group-2">
-            <input className="text-wrapper" placeholder="Enter Command" onChange={handleChange}/>
+            <div className={`overlap-group-2 ${theme === "light" ? "light-gradient" : "dark-gradient"}`}>
+            <input className={`text-wrapper ${theme === "light" ? "dark" : "light"}`} placeholder="Enter Command" onChange={handleChange}/>
             <div 
               onClick={handleSubmit}
               onPointerOver={() => setSubmitHovered(true)}

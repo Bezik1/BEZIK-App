@@ -4,8 +4,10 @@ import { StatusInfoIcon } from "../Icons/StatusInfoIcon"
 import axios from "axios";
 import { useCommandContext } from "../../contexts/CommandContext";
 import "./style.css"
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const ServerInfo = () =>{
+    const { theme } = useThemeContext()
     const { setLoading, setServerActive, serverAcitve, status, setStatus, operation } = useCommandContext()
 
     useEffect(() => {
@@ -34,12 +36,12 @@ export const ServerInfo = () =>{
 
     return (
         <div className="server-info">
-            <div className="overlap-2">
+            <div className={`overlap-2 ${theme === "light" ? "light-el" : "dark-el"}`}>
                 <StatusInfoIcon className="status-info-icon-instance" />
-                <div className="text-wrapper-2">Status:</div>
-                <div className="text-wrapper-3">{status}</div>
+                <div className={`text-wrapper-2 ${theme === "light" ? "dark" : "light"}`}>Status:</div>
+                <div className={`text-wrapper-3 ${theme === "light" ? "dark" : "light"}`}>{status}</div>
                 <IconOutlineChip className="icon-outline-chip-instance" />
-                <div className="text-wrapper-4">{status === 200 ? 'Server Active' : 'Server Disabled'}</div>
+                <div className={`text-wrapper-4 ${theme === "light" ? "dark" : "light"}`}>{status === 200 ? 'Server Active' : 'Server Disabled'}</div>
             </div>
         </div>
     )

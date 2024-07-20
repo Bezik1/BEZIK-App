@@ -20,7 +20,7 @@ export const SideMenu = ({ isMenuOpen } : { isMenuOpen: boolean }) =>{
 
     return (
         <motion.div
-        className="side-menu"
+        className={`side-menu ${theme === "light" ? "light-menu" : "dark-menu"}`}
         initial={{ x: "-100%" }}
         animate={{ x: isMenuOpen ? 0 : "-100%" }}
         transition={{ stiffness: 300, damping: 30 }}
@@ -32,10 +32,10 @@ export const SideMenu = ({ isMenuOpen } : { isMenuOpen: boolean }) =>{
                 onPointerLeave={() => setThemeIconHovered(false)}
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
-                <div className="menu-icon">
+                <div className={`menu-icon ${theme === "light" ? "menu-icon-light" : "menu-icon-dark"}`}>
                     <ThemeIcon theme={theme} hovered={themeIconHovered}/>
                 </div>
-                <p>Theme</p>
+                <p className={theme === "light" ? "dark" : "light"}>Theme</p>
             </div>
             <div className="menu-el"
                 onPointerOver={() => setHomeIconHovered(true)}
@@ -48,7 +48,7 @@ export const SideMenu = ({ isMenuOpen } : { isMenuOpen: boolean }) =>{
                         hovered={homeIconHovered}
                     />
                 </div>
-                <p>Home</p>
+                <p className={theme === "light" ? "dark" : "light"}>Home</p>
             </div>
             <div className="menu-el"
                 onPointerOver={() => setTerminalIconHovered(true)}
@@ -62,7 +62,7 @@ export const SideMenu = ({ isMenuOpen } : { isMenuOpen: boolean }) =>{
                         stokeWidth={1}
                     />
                 </div>
-                <p>Informations</p>
+                <p className={theme === "light" ? "dark" : "light"}>Informations</p>
             </div>
             <div className="menu-el"
                 onPointerOver={() => setPackagesIconHovered(true)}
@@ -75,7 +75,7 @@ export const SideMenu = ({ isMenuOpen } : { isMenuOpen: boolean }) =>{
                         hovered={packagesIconHovered}
                     />
                 </div>
-                <p>Packages</p>
+                <p className={theme === "light" ? "dark" : "light"}>Packages</p>
             </div>
         </div>
     </motion.div>

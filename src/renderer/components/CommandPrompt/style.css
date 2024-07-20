@@ -7,19 +7,25 @@
   }
   
   .app .overlap-group-2 {
-    background: linear-gradient(120deg, #713e55 0%, #b15982 100%);
     border-radius: 20px;
     box-shadow: 0px 4px 4px 1px #00000040;
     height: 51px;
     position: relative;
     width: 521px;
   }
+
+  .dark-gradient {
+    background: linear-gradient(120deg, #713e55 0%, #b15982 100%);
+  }
+
+  .light-gradient {
+    background: linear-gradient(120deg, #E1A1B0  0%, #F3C1D0 100%);
+  }
   
   .app .text-wrapper {
     background: none;
     border: none;
     outline: none;
-    color: #ffffff;
     font-family: "Outfit", Helvetica;
     font-size: 16px;
     font-weight: 400;

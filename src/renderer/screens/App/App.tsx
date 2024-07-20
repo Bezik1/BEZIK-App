@@ -10,15 +10,20 @@ import Packages from "../../components/Packages";
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Notification } from "../../components/Notification";
 import "./style.css";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const App = (): JSX.Element => {
+  const { theme } = useThemeContext()
+
+  console.log(theme)
+
   return (
     <Router>
-      <div className="app">
-        <div className="div-2">
+      <div className={`app ${theme === "light" ? "light" : "dark"}`}>
+        <div className={`div-2 ${theme === "light" ? "light-background" : "dark-background"}`}>
           <div className="operation">
             <div className="overlap">
-              <div className="operations">
+              <div className={`operations ${theme === "light" ? "light-container" : "dark-container"}`}>
                 <Line className="line-instance" />
               </div>
               {/* <Notification /> */}

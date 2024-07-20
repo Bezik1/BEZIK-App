@@ -8,7 +8,6 @@
 }
 
 .app .div-2 {
-  background-color: #321724;
   height: 620px;
   position: relative;
   width: 600px;
@@ -29,7 +28,6 @@
 }
 
 .app .operations {
-  background-color: #462534;
   border-radius: 20px;
   height: 514px;
   left: 0;
@@ -107,4 +105,37 @@
   left: 33.5%;
   width: 190px;
   height: 190px;
+}
+
+.light-background {
+  background: #e1a1b0cd;
+}
+
+.light-container {
+  background-color: #fcb8d1;
+}
+
+.light-el {
+  background-color: #E1A1B0;
+}
+
+
+.dark-background {
+  background-color: #321724;
+}
+
+.dark-container {
+  background-color: #462534;
+}
+
+.dark-el {
+  background-color: #763754;
+}
+
+.light {
+  color: #fff;
+}
+
+.dark {
+  color: #000;
 }

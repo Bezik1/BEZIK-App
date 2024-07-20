@@ -1,11 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 interface Props {
   className: string;
 }
 
 export const Line = ({ className }: Props): JSX.Element => {
+  const { theme } = useThemeContext()
+  
   return (
     <svg
       className={`line ${className}`}
@@ -17,8 +20,8 @@ export const Line = ({ className }: Props): JSX.Element => {
     >
       <defs>
         <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#fff" />
-          <stop offset="100%" stopColor="#fff" />
+          <stop offset="0%" stopColor={theme === "light" ? "#000" : "#fff"} />
+          <stop offset="100%" stopColor={theme === "light" ? "#000" : "#fff"} />
         </linearGradient>
       </defs>
       <motion.path

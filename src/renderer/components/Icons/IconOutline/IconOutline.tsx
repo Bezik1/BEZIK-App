@@ -7,7 +7,7 @@ import React from "react";
 import "./style.css";
 import { motion } from "framer-motion";
 
-import ICON_PATH from "../../../assets/img/icon-outline-terminal.svg"
+import { useThemeContext } from "../../../contexts/ThemeContext";
 
 interface Props {
   className: any;
@@ -16,7 +16,8 @@ interface Props {
 }
 
 export const IconOutline = ({ className, hovered, stokeWidth=1 }: Props): JSX.Element => {
-  
+  const { theme } = useThemeContext()
+
   return (
   <motion.svg 
     className={className}
@@ -28,9 +29,9 @@ export const IconOutline = ({ className, hovered, stokeWidth=1 }: Props): JSX.El
   >
     <motion.path 
       d="M9.55559 10.3624L12.8889 13.6375L9.55559 16.9127M15.1111 16.9127H18.4445M6.22225 22.3712H21.7778C23.0051 22.3712 24 21.3936 24 20.1878V7.08733C24 5.88147 23.0051 4.90392 21.7778 4.90392H6.22225C4.99495 4.90392 4.00003 5.88147 4.00003 7.08733V20.1878C4.00003 21.3936 4.99495 22.3712 6.22225 22.3712Z" 
-      stroke="#fff" 
+      stroke={theme === "light" ? "#000" : "#fff"} 
       stroke-linecap="round" 
-      strokeWidth={stokeWidth}
+      strokeWidth={1.5}
       stroke-linejoin="round"
       initial={{ pathLength: 1 }}
       animate={{ pathLength: hovered ? [0, 1] : 1 }}

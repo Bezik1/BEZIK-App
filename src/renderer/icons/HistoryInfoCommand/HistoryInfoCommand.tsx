@@ -4,12 +4,15 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 */
 
 import React from "react";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 interface Props {
   className: any;
 }
 
 export const HistoryInfoCommand = ({ className }: Props): JSX.Element => {
+  const { theme } = useThemeContext()
+
   return (
     <svg
       className={`${className}`}
@@ -23,7 +26,8 @@ export const HistoryInfoCommand = ({ className }: Props): JSX.Element => {
         <path
           className="path"
           d="M11.5385 13.7555H10.4895V9.82533H9.44056M10.4895 5.8952H10.5M19.9301 9.82533C19.9301 14.7091 15.7034 18.6681 10.4895 18.6681C5.27563 18.6681 1.04895 14.7091 1.04895 9.82533C1.04895 4.94159 5.27563 0.982536 10.4895 0.982536C15.7034 0.982536 19.9301 4.94159 19.9301 9.82533Z"
-          stroke="#D9D9D9"
+          stroke={theme === "light" ? "#444" : "#D9D9D9"}
+          strokeWidth={1.5}
           strokeLinecap="round"
           strokeLinejoin="round"
         />

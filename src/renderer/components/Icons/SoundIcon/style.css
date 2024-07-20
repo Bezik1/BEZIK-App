@@ -5,8 +5,16 @@
   width: 18px;
 }
 
-.sound-icon .sound-line {
+.sound-icon-dark {
   background-color: #d9d9d9;
+}
+
+.sound-icon-light {
+  background-color: #333;
+}
+
+.sound-icon .sound-line {
+  
   border-radius: 5px;
   left: 0;
   position: absolute;
@@ -14,7 +22,7 @@
 }
 
 .sound-icon .div {
-  background-color: #d9d9d9;
+  
   border-radius: 5px;
   left: 4px;
   position: absolute;
@@ -22,7 +30,7 @@
 }
 
 .sound-icon .sound-line-1 {
-  background-color: #d9d9d9;
+  
   border-radius: 5px;
   left: 5px;
   position: absolute;
@@ -30,7 +38,7 @@
 }
 
 .sound-icon .sound-line-2 {
-  background-color: #d9d9d9;
+  
   border-radius: 5px;
   left: 10.5px !important;
   position: absolute;
@@ -38,7 +46,7 @@
 }
 
 .sound-icon .sound-line-3 {
-  background-color: #d9d9d9;
+  
   border-radius: 5px;
   left: 11px;
   position: absolute;
@@ -46,7 +54,7 @@
 }
 
 .sound-icon .sound-line-4 {
-  background-color: #d9d9d9;
+  
   border-radius: 5px;
   left: 16px;
   position: absolute;

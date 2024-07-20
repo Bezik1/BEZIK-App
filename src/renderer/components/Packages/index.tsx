@@ -5,8 +5,10 @@ import axios from "axios"
 import { PackagesGetIcon } from "../Icons/PackagesGetIcon"
 import { ServerRunIcon } from "../Icons/ServerRunIcon"
 import "./style.css"
+import { useThemeContext } from "../../contexts/ThemeContext"
 
 const Packages = () =>{
+    const { theme } = useThemeContext()
     const [packagesMatch, setPackagesMatch] = useState(false)
     const [packages, setPackages] = useState<string[]>([])
     const [requiredPackages, setRequiredPackages] = useState<string[]>([])
@@ -88,34 +90,34 @@ const Packages = () =>{
     return (
         <div className="packages">
             <div className="packages-life">
-                <div className="packages-status">
+                <div className={`packages-status ${theme === "light" ? "light-el" : "dark-el"}`}>
                     <div className="package-status-el">
                         <PackageStatusIcon className="packages-status-icon"/>
-                        <div className="package-status-text">Packages {packagesMatch ? "Installed" : "Missing"}</div>
+                        <div className={`package-status-text ${theme === "light" ? "dark" : "light"}`}>Packages {packagesMatch ? "Installed" : "Missing"}</div>
                     </div>
                     <div className={packagesMatch ? "packages-status-btn-inactive" : "packages-status-btn"} onClick={installPackages}>
                         <PackagesGetIcon className="packages-status-icon" />
-                        <div className="package-status-text">Install Packages</div>
+                        <div className={`package-status-text ${theme === "light" ? "dark" : "light"}`}>Install Packages</div>
                     </div>
                 </div>
-                <div className="package-run-container">
+                <div className={`package-run-container ${theme === "light" ? "light-el" : "dark-el"}`}>
                     <div className="package-status-el">
                         <PackageStatusIcon className="packages-status-icon"/>
-                        <div className="package-status-text">Server {serverAcitve ? "Active" : "Inactive"}</div>
+                        <div className={`package-status-text ${theme === "light" ? "dark" : "light"}`}>Server {serverAcitve ? "Active" : "Inactive"}</div>
                     </div>
                     <div className={serverAcitve ? "packages-status-btn-inactive" : "packages-status-btn"} onClick={runServer}>
                         <ServerRunIcon className="package-run-icon" />
-                        <div className="package-status-text">Run Server</div>
+                        <div className={`package-status-text ${theme === "light" ? "dark" : "light"}`}>Run Server</div>
                     </div>
                 </div>
             </div>
             <div className="packages-list">
-                <div className="packages-list-overlap">
-                    <header className="package-list-header">Installed Packages</header>
-                    <div className="package-line" />
+                <div className={`packages-list-overlap ${theme === "light" ? "light-el" : "dark-el"}`}>
+                    <header className={`package-list-header ${theme === "light" ? "dark" : "light"}`}>Installed Packages</header>
+                    <div className={`package-line ${theme === "light" ? "package-line-light" : "package-line-dark"}`} />
                     <div className="packages-list-container">
                         {packages.map((p, i) => (
-                            <div className="package-el">
+                            <div className={`package-el ${theme === "light" ? "dark" : "light"}`}>
                                 {i+1}. {p.split("==")[0].substring(0, 14)}{p.length > 14 && "..."}
                             </div>
                         ))}

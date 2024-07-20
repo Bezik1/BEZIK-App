@@ -12,8 +12,10 @@ import LOGO_PATH from "../../assets/img/logo.svg"
 
 import "./style.css"
 import { SideMenu } from "../SideMenu";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const Navbar = () => {
+    const { theme } = useThemeContext()
     const { status } = useCommandContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [microphoneAccess, setMicrophoneAccess] = useState(false);
@@ -48,7 +50,7 @@ export const Navbar = () => {
     };
 
     return (
-        <div className="navbar">
+        <div className={`navbar ${theme === "light" ? "light-navbar" : "dark-navbar"}`}>
             <div className="options" onClick={toggleMenu}>
                 <IconOutlineView className="icon-outline-view-grid" />
             </div>
