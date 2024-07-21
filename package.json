@@ -114,6 +114,7 @@
     "react-router-dom": "^6.16.0",
     "react-speech-recognition": "^3.10.0",
     "regenerator-runtime": "^0.14.1",
+    "selenium-webdriver": "^4.23.0",
     "three": "^0.165.0"
   },
   "devDependencies": {

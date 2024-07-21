@@ -61,7 +61,8 @@ export const CommandPrompt = () =>{
             setTranscription("")
             setStatus(res.data.status)
             setOperation(res.data.operation)
-
+            
+            console.log(res)
             if(res.data.cache.links) setLinks(res.data.cache.links)
             if(res.data.cache.informations) setInformation(getFilteredText(res.data.cache.informations))
               
